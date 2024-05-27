@@ -6,6 +6,7 @@ import java.time.ZoneId;
 import java.time.ZoneOffset;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
+import roomescape.support.extension.DatabaseCleaner;
 
 @TestConfiguration
 public class TestConfig {
@@ -16,5 +17,10 @@ public class TestConfig {
         ZoneId zone = ZoneOffset.UTC;
 
         return Clock.fixed(fixedInstant, zone);
+    }
+
+    @Bean
+    public DatabaseCleaner databaseCleaner() {
+        return new DatabaseCleaner();
     }
 }
